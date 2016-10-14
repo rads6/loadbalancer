@@ -1,7 +1,7 @@
 #!/bin/bash
 #checking conditions
 if [ "$#" -ne 5 ]; then
-   echo "Missing parameters"
+   echo "You have some missing parameters"
    echo -n "the paramters should be displayed in this format:"
    echo -n " 1) AMI ID: ami-06b94666"
    echo -n "2)KEY-NAME: inclass"
