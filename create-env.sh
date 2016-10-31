@@ -1,4 +1,5 @@
-ecking conditions
+#!/bin/bash
+echo "creating db instance and launch environment"
 if [ "$#" -ne 5 ]; then
    echo "You have some missing parameters"
    echo -n "the paramters should be displayed in this format:"
@@ -6,7 +7,7 @@ if [ "$#" -ne 5 ]; then
    echo -n "2)KEY-NAME: inclass"
    echo -n "3)security-group: sg-1db27864 "
    echo -n "4) launch-configuration: Give any name"
-   echo -n "5) COUNT: Number of instance numeric value, minimum 2 maximum 5"
+   echo -n "5) COUNT: Number of instance numeric value, minimum 1 maximum 5"
    exit 0
 else
 echo "all parameters conditions are matching ..we can go ahead"
@@ -14,7 +15,7 @@ fi
 
 
 
-aws ec2 run-instances --image-id $1 --key-name $2 --security-group-ids $3 --instance-type t2.micro --user-data file://installapp.sh --count 1 --placement AvailabilityZone=us-west-2b
+aws ec2 run-instances --image-id $1 --key-name $2 --security-group-ids $3 --instance-type t2.micro --user-data file://installapp.sh --count $5 --placement AvailabilityZone=us-west-2b
 
 #Instance=`aws ec2 describe-instances --query 'Reservations[*].Instances[*].[Placement.AvailabilityZone, State.Name, InstanceId]' --output text | grep us-west-2b | grep running|pending | awk '{print 
 #$3}'`
